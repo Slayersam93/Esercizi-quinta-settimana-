@@ -20,15 +20,17 @@ public class ConversionServlet extends HttpServlet {
 		String temperatura = request.getParameter("valore");
 		double tempDouble = Double.parseDouble(temperatura);
 		double result = 0;
-		if (tipoSorgente.equals("celsius")) {
-			if (tipoDestinazione.equals("kelvin")) {
+		if (tipoSorgente.equalsIgnoreCase("celsius")) {
+			if (tipoDestinazione.equalsIgnoreCase("kelvin")) {
 				result = tempDouble + 273;
 			}
 		}
-		System.out.println("La temperatura di " + tempDouble + " gradi " + tipoSorgente + " corrisponde a " + result + " gradi" + tipoDestinazione);
+		System.out.println("La temperatura di " + tempDouble + " gradi " + tipoSorgente + " corrisponde a " + result
+				+ " gradi" + tipoDestinazione);
 		PrintWriter pv = response.getWriter();
 		response.setContentType("text/html");
-		pv.println("<p> La temperatura di " + tempDouble + " gradi " + tipoSorgente + " corrisponde a " + result + " gradi " + tipoDestinazione + "</p>");
+		pv.println("<p> La temperatura di " + tempDouble + " gradi " + tipoSorgente + " corrisponde a " + result
+				+ " gradi " + tipoDestinazione + "</p>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,5 +38,4 @@ public class ConversionServlet extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }
